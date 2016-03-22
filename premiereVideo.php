@@ -1,11 +1,9 @@
+<?php require('connexion.php'); ?>
 <!DOCTYPE html>
-<html xml:lang="fr" lang="fr"><head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
-	<meta name="author" content="toute l'équipe du vidéo box">
-	<meta name="keywords" content="">
-	<meta name="description" content="Vidéo Box">
-	<meta name="viewport" content="width=device-width, minimum-scale=1" />
+<html>
+<html lang="fr">
+<head>
+	<?php include 'head.php'; ?>
 	<link rel="stylesheet" href="css/libs/reset.css">
 	<link rel="stylesheet" href="css/general.css" title="apparence">
 	<link rel="icon" type="image/png" href="images/favicon/favicon.png">
