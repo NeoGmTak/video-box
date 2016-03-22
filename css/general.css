@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'juiceregular';
-    src: url('font/juice___-webfont.eot');
-    src: url('font/juice___-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/juice___-webfont.woff2') format('woff2'),
-         url('font/juice___-webfont.woff') format('woff'),
-         url('font/juice___-webfont.ttf') format('truetype'),
-         url('font/juice___-webfont.svg#juiceregular') format('svg');
+    src: url('../font/juice___-webfont.eot');
+    src: url('../font/juice___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/juice___-webfont.woff2') format('woff2'),
+         url('../font/juice___-webfont.woff') format('woff'),
+         url('../font/juice___-webfont.ttf') format('truetype'),
+         url('../font/juice___-webfont.svg#juiceregular') format('svg');
     font-weight: normal;
     font-style: normal;
 	
