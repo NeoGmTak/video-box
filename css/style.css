@@ -1,5 +1,21 @@
+@font-face {
+    font-family: 'juiceregular';
+    src: url('../font/juice___-webfont.eot');
+    src: url('../font/juice___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/juice___-webfont.woff2') format('woff2'),
+         url('../font/juice___-webfont.woff') format('woff'),
+         url('../font/juice___-webfont.ttf') format('truetype'),
+         url('../font/juice___-webfont.svg#juiceregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+	
+}
+
 body {
 	margin: 0 auto;
+	display: flex;
+	width: 100%;
+	height: 100vh;
 }
 .accueil {
 
@@ -18,7 +34,7 @@ body {
 }
 
 .text {
-	font-family: "Juice";
+	font-family: "juiceregular";
 	color:white;
 	font-size: 60px;
 	text-align: center;
@@ -66,7 +82,7 @@ input {
 	width: 60%;
 	height: 100px;
 	background: transparent;
-	font-family: "aaaiight!";
+	font-family: "juiceregular";
 	color: white;
 	font-size: 40px;
 	position: relative;
@@ -80,8 +96,9 @@ input {
 }
 
 ::-webkit-input-placeholder {
+   opacity: 1;
    padding-left: 18px;
-   font-family: "aaaiight!";
+   font-family: "juiceregular";
    font-size: 40px;
    color: white;
 }
@@ -89,7 +106,52 @@ input {
 ::-moz-placeholder {  /* Firefox 19+ */
    opacity: 1;
    padding-left: 18px;
-   font-family: "aaaiight!";
+   font-family: "juiceregular";
    font-size: 40px;
    color: white;
+}
+
+.avous {
+	width: 400px;
+	position: absolute;
+	left: 160px;
+	bottom: 20px;
+	font-family: "juiceregular";
+    font-size: 30px;
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #e33d49 , #ea5e43); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #e33d49, #ea5e43); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #e33d49, #ea5e43); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #e33d49 , #ea5e43); /* Standard syntax */
+    border-radius: 4px;
+}
+
+.avous p {
+	text-align: center;
+	color: white;
+	position: relative;
+	top: 8px;
+}
+
+#Crono {
+	position: absolute;
+	font-family: "juiceregular";
+	color: white;
+	font-size: 120px;
+	top: 39%;
+  	transform: translateY(-50%);
+  	left: 50%;
+  	transform: translateX(-50%);
+  	z-index: 2;
+
+}
+
+#rond {
+	width: 15%;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+  	z-index: 1;
 }
