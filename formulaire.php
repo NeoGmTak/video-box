@@ -10,9 +10,13 @@
 <body>
 
 	<section class="accueil">
-		<p class="text">Démarer l'expérience !</p>
-		<a id="lien" href="formulaire.php"><img id="play" src="images/play.svg" alt="Boutton démarrer"></a>
-		<img id="logo" src="images/logo.svg" alt="Logo vidéobox">
+<div class="formulaire">
+		<form action="" method="">
+		<input type="text" placeholder="Nom :" /><br />
+		<input type="text" placeholder="Prénom :" /><br />
+		<input type="submit" value="Valider" /><br />
+	</form>
+	</div>
 	</section>
 
 	</body>
