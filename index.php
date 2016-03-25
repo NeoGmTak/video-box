@@ -11,9 +11,36 @@
 
 	<section class="accueil">
 		<p class="text">Démarer l'expérience !</p>
-		<a id="lien" href="formulaire.php"><img id="play" src="images/play.svg" alt="Boutton démarrer"></a>
+		<div id="lien" href=""><img id="play" src="images/play.svg" alt="Boutton démarrer"></div>
+		<video id="videoA" controls>
+                <source src="video/video.mp4" type="video/mp4">
+                    </video>
 		<img id="logo" src="images/logo.svg" alt="Logo vidéobox">
 	</section>
+	<script>
+        function effacer() {
+            $('#A').css('display', 'none');
+            document.getElementById('videoA').pause();
+        }
+        $( "#lien" ).click(function() {
+                $('#A').css('display', 'block');
+                $('#A > video').css('display', 'block');
+                var video = document.getElementById('videoA');
+                video.currentTime = 0;
+                video.play();
+                if (video.requestFullscreen) {
+                  video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) {
+                  video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) {
+                  video.webkitRequestFullscreen();
+                }
+
+                 video.onended = function(e) {
+                    window.location.href = 'formulaire.php'; 
+             };
+});
+    </script>
 
 	</body>
 </html>
