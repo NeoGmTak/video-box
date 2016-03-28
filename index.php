@@ -23,6 +23,7 @@
             document.getElementById('videoA').pause();
         }
         $( "#lien" ).click(function() {
+                $('video').css('display', 'block');
                 $('#A').css('display', 'block');
                 $('#A > video').css('display', 'block');
                 var video = document.getElementById('videoA');

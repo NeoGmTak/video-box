@@ -132,7 +132,7 @@ input {
 	text-align: center;
 	color: white;
 	position: relative;
-	top: 8px;
+	top: 10px;
 	z-index: 4;
 }
 
@@ -141,37 +141,28 @@ input {
 	font-family: "juiceregular";
 	color: white;
 	font-size: 120px;
-	top: 39%;
+	top: 41%;
   	transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
   	left: 50%;
   	transform: translateX(-50%);
-  	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
   	z-index: 2;
 
 }
 
 #rond {
 	width: 15%;
-	position: absolute;
-  	top: 30%;
+	display: block;
+	margin: 0 auto;
+	position: relative;
+  	top: 50%;
+  	left: 160px;
   	transform: translateY(-50%);
-  	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-  	left: 50%;
-  	transform: translateX(-50%);
-  	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
   	z-index: 1;
 }
-<<<<<<< HEAD
 
 #stopRecord {
 	z-index: 5;
 }
-=======
 video {
 	display: none;
 	width:100%;
@@ -183,4 +174,3 @@ video {
 	z-index: 100;
     background-color: black;
 }
->>>>>>> f9236f70555a75c42a8726f00a05b5d9d13dafac
