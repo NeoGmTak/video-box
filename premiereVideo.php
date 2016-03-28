@@ -14,19 +14,19 @@
 	</header>
 	
 	<section>
-		<a href="">
+		<a href="enregistrementVideo.php?id=0">
 			<div id="gauche">
 				<img src="images/smiley01.svg" alt="bon souvenir">
 				<p>Enregistrer</p>
 			</div>
 		</a>
-		<a href="">
+		<a href="enregistrementVideo.php?id=1">
 			<div id="droite">
 				<img src="images/smiley02.svg" alt="mauvais souvenir">
 				<p>Enregistrer</p>
 			</div>
 		</a>
-		<a href="">
+		<a href="reglageCam.php">
 			<div id="retour">
 				<img src="images/retour.svg" alt="changer le nom et prénom">
 			</div>

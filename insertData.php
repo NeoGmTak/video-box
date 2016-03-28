@@ -6,6 +6,9 @@
 							'nom' => $_POST['nom'],
 							'prenom' => $_POST['prenom']
 						)); 
+		$_SESSION['nom'] = $_POST['nom'];
+		$_SESSION['prenom'] = $_POST['prenom'];
 	}
+
 	// Insérer le nom de la page php 
-	header('Location: ');
+	header('Location: reglageCam.php');

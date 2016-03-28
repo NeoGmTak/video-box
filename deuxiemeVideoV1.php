@@ -8,19 +8,22 @@
 	<link rel="stylesheet" href="css/general.css" title="apparence">
 	<link rel="icon" type="image/png" href="images/favicon/favicon.png">
 	<title>Vidéo Box !</title>
+	<?php 
+		$_SESSION['secondVideo'] = true;
+	?>
 </head>
 <body>
 	<header>
 	</header>
 	
 	<section>
-		<a href="">
+		<a href="enregistrementVideo.php">
 			<div id="gauche">
 				<img src="images/smiley01.svg" alt="bon souvenir">
 				<p>Enregistrer</p>
 			</div>
 		</a>
-		<a href="">
+		<a href="pageFin.php">
 			<div id="droite">
 				<div>
 					<p>Terminer l'expérience</p>

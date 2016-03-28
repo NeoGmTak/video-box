@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'juiceregular';
-    src: url('../font/juice___-webfont.eot');
-    src: url('../font/juice___-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../font/juice___-webfont.woff2') format('woff2'),
-         url('../font/juice___-webfont.woff') format('woff'),
-         url('../font/juice___-webfont.ttf') format('truetype'),
-         url('../font/juice___-webfont.svg#juiceregular') format('svg');
+    src: url('../fonts/juice___-webfont.eot');
+    src: url('../fonts/juice___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/juice___-webfont.woff2') format('woff2'),
+         url('../fonts/juice___-webfont.woff') format('woff'),
+         url('../fonts/juice___-webfont.ttf') format('truetype'),
+         url('../fonts/juice___-webfont.svg#juiceregular') format('svg');
     font-weight: normal;
     font-style: normal;
 	
@@ -166,7 +166,21 @@ input {
 	-moz-transform: translateX(-50%);
   	z-index: 1;
 }
+<<<<<<< HEAD
 
 #stopRecord {
 	z-index: 5;
 }
+=======
+video {
+	display: none;
+	width:100%;
+	height:100vh;
+	min-height:100%;
+	position:fixed;
+	top: 0;
+	right: 0;
+	z-index: 100;
+    background-color: black;
+}
+>>>>>>> f9236f70555a75c42a8726f00a05b5d9d13dafac

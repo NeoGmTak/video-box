@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="css/general.css" title="apparence">
 	<link rel="icon" type="image/png" href="images/favicon/favicon.png">
 	<title>Vidéo Box !</title>
+	<?php 
+		unset($_SESSION['id']);
+		unset($_SESSION['secondVideo']);
+	?>
 </head>
 <body>
 	<header>
