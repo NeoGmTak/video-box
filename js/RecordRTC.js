@@ -581,6 +581,7 @@ RecordRTC.writeToDisk = function(options) {
     } else if (options.audio && options.video) {
         options.audio.getDataURL(function(audioDataURL) {
             options.video.getDataURL(function(videoDataURL) {
+                console.log(audioDataURL);
                 DiskStorage.Store({
                     audioBlob: audioDataURL,
                     videoBlob: videoDataURL

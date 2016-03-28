@@ -33,9 +33,9 @@ function decompte()
 </head>
 
 <body onload="decompte();">
-		<div id="Crono"></div>
-		<img id="logo" src="images/logo.svg" alt="Logo vidéobox" style="width: 120px;position: absolute;left: 8px;bottom: 8px;">
-		<img id="rond" src="images/rond.svg" alt="rond">
-		<div class="avous"><p>C'est à vous dans ...</p></div>
-	</body>
+	<div id="Crono"></div>
+	<img id="logo" src="images/logo.svg" alt="Logo vidéobox" style="width: 120px;position: absolute;left: 8px;bottom: 8px;">
+	<img id="rond" src="images/rond.svg" alt="rond">
+	<div class="avous"><p>C'est à vous dans ...</p></div>
+</body>
 </html>

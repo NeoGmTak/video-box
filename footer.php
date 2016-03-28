@@ -3,5 +3,4 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <footer>
-	<p>Copyright MMI 2015-2016</p>
 </footer>

@@ -1,3 +1,4 @@
+<?php require('connexion.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,85 +8,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="author" content="Muaz Khan">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <link rel="stylesheet" href="https://cdn.webrtc-experiment.com/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <?php include 'head.php'; ?>
 
     <style>
-    audio {
-        vertical-align: bottom;
-        width: 10em;
-    }
-    video {
-        max-width: 100%;
-        vertical-align: top;
-    }
-    input {
-        border: 1px solid #d9d9d9;
-        border-radius: 1px;
-        font-size: 2em;
-        margin: .2em;
-        width: 30%;
-    }
-    p,
-    .inner {
-        padding: 1em;
-    }
-    li {
-        border-bottom: 1px solid rgb(189, 189, 189);
-        border-left: 1px solid rgb(189, 189, 189);
-        padding: .5em;
-    }
-    label {
-        display: inline-block;
-        width: 8em;
-    }
-    </style>
     
-    <style>
-        .recordrtc button {
-            font-size: inherit;
+        video#bgvid {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height:auto;
+            z-index: -1;
         }
-        
-        .recordrtc button, .recordrtc select {
-            vertical-align: middle;
-            line-height: 1;
-            padding: 2px 5px;
-            height: auto;
-            font-size: inherit;
-            margin: 0;
+        #chronoVideo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 6;
         }
-        
-        .recordrtc, .recordrtc .header {
-            display: block;
-            text-align: center;
-            padding-top: 0;
-        }
-        
-        .recordrtc video {
-            width: 100%;
+       /* #startRecord {
+            position: absolute;
+            margin-right: 50%;
+            transform: translateX(-50%);
+            width:350px;
+            z-index: 1;
+        }*/
+        #recordBtn {
+            visibility: hidden;
         }
     </style>
-    
+    <script>
+/* -- -- -- Début -- -- -- */
+var cpt = 3 ;
+var x ;
+ 
+function decompte()
+{
+    if(cpt>=0) {
+        document.getElementById("Crono").innerHTML = "" + cpt ;
+        cpt-- ;
+        x = setTimeout("decompte()",1000) ;
+    } else {
+        clearTimeout(x);
+        $('#Crono').fadeOut();
+        $('#rond').fadeOut();
+        $('.avous').fadeOut();
+        $('#stopRecord').fadeIn();
+        $('#recordBtn').css('visibility', 'visible');
+        document.getElementById('recordBtn').click();
+        /*setTimeout(function() {
+            document.getElementById('recordBtn').click();
+        }, 5000);*/
+
+    }
+}
+/* -- -- -- Fin -- -- -- */
+    </script>
     <script src="js/RecordRTC.js"></script>
-    <script src="https://cdn.webrtc-experiment.com/gif-recorder.js"></script>
     <script src="js/getScreenId.js"></script>
 
     <!-- for Edige/FF/Chrome/Opera/etc. getUserMedia support -->
     <script src="js/gumadapter.js"></script>
 </head>
 
-<body>
+<body onload="decompte();">
+    <div id="Crono"></div>
+    <div id="chronoVideo"></div>
+    <img id="logo" src="images/logo.svg" alt="Logo vidéobox" style="width: 120px;position: absolute;left: 8px;bottom: 8px;">
+    <img id="rond" src="images/rond.svg" alt="rond">
+    <div class="avous"><p>C'est à vous dans ...</p></div>
     <article>
         <section class="experiment recordrtc">
             <h2 class="header">
-                <select class="recording-media" style="visibility:hidden;">
+                <select class="recording-media" style="visibility:hidden;position: relative;left:-3000px;">
 
                 </select>
-                <select class="media-container-format" style="visibility:hidden;">
+                <select class="media-container-format" style="visibility:hidden;position: relative;left:-3000px;">
                     <option selected>Mp4</option>
                 </select>
                 <br />
-                <button>Start Recording</button>
+                <button id="recordBtn" type="button" class="btn btn-danger">Start Recording</button>
+                <!--<button id="stopRecord" style="display: none;">Arrêter l'enregistrement</button>-->
             </h2>
             
             <div style="text-align: center; display: none;">
@@ -95,7 +101,7 @@
             
             <br>
 
-            <video controls muted></video>
+            <video controls muted id="bgvid"></video>
         </section>
         
         <script>
@@ -146,8 +152,9 @@
             
             recordingDIV.querySelector('button').onclick = function() {
                 var button = this;
+                console.log(button);
 
-                if(button.innerHTML === 'Stop Recording') {
+                if(button.innerHTML === 'Terminer l\'enregistrement') {
                     button.disabled = true;
                     button.disableStateWaiting = true;
                     setTimeout(function() {
@@ -170,6 +177,7 @@
                                 if(!button.recordRTC[1]) {
                                     button.recordingEndedCallback(url);
                                     stopStream();
+                                    RecordRTC.writeToDisk();
 
                                     saveToDiskOrOpenNewTab(button.recordRTC[0]);
                                     return;
@@ -178,6 +186,8 @@
                                 button.recordRTC[1].stopRecording(function(url) {
                                     button.recordingEndedCallback(url);
                                     stopStream();
+                                    RecordRTC.writeToDisk();
+
                                 });
                             });
                         }
@@ -185,7 +195,9 @@
                             button.recordRTC.stopRecording(function(url) {
                                 button.recordingEndedCallback(url);
                                 stopStream();
-
+                                RecordRTC.save.saving('test');
+                                //RecordRTC.writeToDisk();
+                                console.log(RecordRTC.getBlob());
                                 saveToDiskOrOpenNewTab(button.recordRTC);
                             });
                         }
@@ -199,11 +211,12 @@
                 var commonConfig = {
                     onMediaCaptured: function(stream) {
                         button.stream = stream;
+
                         if(button.mediaCapturedCallback) {
                             button.mediaCapturedCallback();
                         }
 
-                        button.innerHTML = 'Stop Recording';
+                        button.innerHTML = 'Terminer l\'enregistrement';
                         button.disabled = false;
                     },
                     onMediaStopped: function() {
@@ -327,21 +340,6 @@
                 });
             }
             
-            function captureAudio(config) {
-                captureUserMedia({audio: true}, function(audioStream) {
-                    recordingPlayer.srcObject = audioStream;
-                    recordingPlayer.play();
-                    
-                    config.onMediaCaptured(audioStream);
-                    
-                    audioStream.onended = function() {
-                        config.onMediaStopped();
-                    };
-                }, function(error) {
-                    config.onMediaCapturingFailed(error);
-                });
-            }
-
             function captureAudioPlusVideo(config) {
                 captureUserMedia({video: true, audio: true}, function(audioVideoStream) {
                     recordingPlayer.srcObject = audioVideoStream;
@@ -354,76 +352,6 @@
                     };
                 }, function(error) {
                     config.onMediaCapturingFailed(error);
-                });
-            }
-            
-            function captureScreen(config) {
-                getScreenId(function(error, sourceId, screenConstraints) {
-                    if (error === 'not-installed') {
-                        document.write('<h1><a target="_blank" href="https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk">Please install this chrome extension then reload the page.</a></h1>');
-                    }
-
-                    if (error === 'permission-denied') {
-                        alert('Screen capturing permission is denied.');
-                    }
-
-                    if (error === 'installed-disabled') {
-                        alert('Please enable chrome screen capturing extension.');
-                    }
-                    
-                    if(error) {
-                        config.onMediaCapturingFailed(error);
-                        return;
-                    }
-
-                    captureUserMedia(screenConstraints, function(screenStream) {
-                        recordingPlayer.srcObject = screenStream;
-                        recordingPlayer.play();
-                        
-                        config.onMediaCaptured(screenStream);
-                        
-                        screenStream.onended = function() {
-                            config.onMediaStopped();
-                        };
-                    }, function(error) {
-                        config.onMediaCapturingFailed(error);
-                    });
-                });
-            }
-
-            function captureAudioPlusScreen(config) {
-                getScreenId(function(error, sourceId, screenConstraints) {
-                    if (error === 'not-installed') {
-                        document.write('<h1><a target="_blank" href="https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk">Please install this chrome extension then reload the page.</a></h1>');
-                    }
-
-                    if (error === 'permission-denied') {
-                        alert('Screen capturing permission is denied.');
-                    }
-
-                    if (error === 'installed-disabled') {
-                        alert('Please enable chrome screen capturing extension.');
-                    }
-                    
-                    if(error) {
-                        config.onMediaCapturingFailed(error);
-                        return;
-                    }
-
-                    screenConstraints.audio = true;
-
-                    captureUserMedia(screenConstraints, function(screenStream) {
-                        recordingPlayer.srcObject = screenStream;
-                        recordingPlayer.play();
-                        
-                        config.onMediaCaptured(screenStream);
-                        
-                        screenStream.onended = function() {
-                            config.onMediaStopped();
-                        };
-                    }, function(error) {
-                        config.onMediaCapturingFailed(error);
-                    });
                 });
             }
             
@@ -501,6 +429,8 @@
             }
             
             function saveToDiskOrOpenNewTab(recordRTC) {
+                console.log(recordRTC);
+                console.log(recordRTC.save());
                 recordingDIV.querySelector('#save-to-disk').parentNode.style.display = 'block';
                 recordingDIV.querySelector('#save-to-disk').onclick = function() {
                     if(!recordRTC) return alert('No recording found.');
@@ -513,6 +443,40 @@
                     
                     window.open(recordRTC.toURL());
                 };
+            }
+            var listOfFilesUploaded = [];
+
+            function uploadToServer(recordRTC, callback) {
+                var blob = recordRTC instanceof Blob ? recordRTC : recordRTC.blob;
+                var fileType = blob.type.split('/')[0] || 'audio';
+                var fileName = (Math.random() * 1000).toString().replace('.', '');
+
+                if (fileType === 'audio') {
+                    fileName += '.' + (!!navigator.mozGetUserMedia ? 'ogg' : 'wav');
+                } else {
+                    fileName += '.webm';
+                }
+
+                // create FormData
+                var formData = new FormData();
+                formData.append(fileType + '-filename', fileName);
+                formData.append(fileType + '-blob', blob);
+
+                callback('Uploading ' + fileType + ' recording to server.');
+
+                makeXMLHttpRequest('save.php', formData, function(progress) {
+                    if (progress !== 'upload-ended') {
+                        callback(progress);
+                        return;
+                    }
+
+                    var initialURL = location.href.replace(location.href.split('/').pop(), '') + 'uploads/';
+
+                    callback('ended', initialURL + fileName);
+
+                    // to make sure we can delete as soon as visitor leaves
+                    listOfFilesUploaded.push(initialURL + fileName);
+                });
             }
         </script>
 
@@ -622,6 +586,33 @@
                     DetectRTC.screen.onMessageCallback(event.data);
                 });
             </script>
+            <script src="js/jquery-2.1.4.js"></script>
+            <script type="text/javascript">
+            var compte = 20;
+            var timer = null;
+            function decompteVideo()
+                    {
+                            if(compte <= 1) {
+                            pluriel = "";
+                            } else {
+                            pluriel = "s";
+                            }
+                     
+                        document.getElementById("chronoVideo").innerHTML = compte + " seconde" + pluriel;
+                     
+                            if(compte == 0 || compte < 0) {
+                            compte = 0;
+                     
+                            clearInterval(timer);
+                            }
+                     
+                        compte--;
+                    }
+                $("#recordBtn").on("click", function() {
+                    timer = setInterval('decompteVideo()',1000);
+                });
+            </script>
+            <?php include 'footer.php'; ?>
 </body>
 
 </html>

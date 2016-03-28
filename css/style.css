@@ -70,6 +70,7 @@ body {
 	position: absolute;
 	right: 8px;
 	bottom: 8px;
+	z-index: 4;
 }
 
 label {
@@ -124,6 +125,7 @@ input {
     background: -moz-linear-gradient(right, #e33d49, #ea5e43); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, #e33d49 , #ea5e43); /* Standard syntax */
     border-radius: 4px;
+    z-index: 3;
 }
 
 .avous p {
@@ -131,6 +133,7 @@ input {
 	color: white;
 	position: relative;
 	top: 8px;
+	z-index: 4;
 }
 
 #Crono {
@@ -140,18 +143,30 @@ input {
 	font-size: 120px;
 	top: 39%;
   	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
   	left: 50%;
   	transform: translateX(-50%);
+  	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
   	z-index: 2;
 
 }
 
 #rond {
 	width: 15%;
-	display: block;
-	margin: 0 auto;
-	position: relative;
-  	top: 50%;
+	position: absolute;
+  	top: 30%;
   	transform: translateY(-50%);
+  	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+  	left: 50%;
+  	transform: translateX(-50%);
+  	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
   	z-index: 1;
+}
+
+#stopRecord {
+	z-index: 5;
 }
