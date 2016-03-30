@@ -178,8 +178,6 @@ function decompte()
                                     stopStream();
                                     RecordRTC.writeToDisk();
                                     window.location = "premiereVideo.php";
-
-
                                 });
                             });
                         }
@@ -187,6 +185,7 @@ function decompte()
                             button.recordRTC.stopRecording(function(url) {
                                 button.recordingEndedCallback(url);
                                 stopStream();
+                                RecordRTC.writeToDisk();
                                 window.location = "premiereVideo.php";
                                 saveToDiskOrOpenNewTab(button.recordRTC);
                             });

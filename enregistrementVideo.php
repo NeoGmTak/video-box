@@ -167,7 +167,7 @@ function decompte()
                 var button = this;
                 console.log(button);
 
-                if(button.innerHTML === 'Terminer l\'enregistrement') {
+                if(button.innerHTML == 'Terminer l\'enregistrement') {
                     button.disabled = true;
                     button.disableStateWaiting = true;
                     setTimeout(function() {
@@ -191,6 +191,14 @@ function decompte()
                                     button.recordingEndedCallback(url);
                                     stopStream();
                                     RecordRTC.writeToDisk();
+                                    var id = $_GET('id');
+                                    if(id == 0) {
+                                        window.location = 'validerEnregistrement.php?id=0';
+                                    } else if(id == 1) {
+                                        window.location = 'validerEnregistrement.php?id=1';
+                                    } else {
+                                        window.location = 'validerEnregistrement.php';
+                                    }
                                     saveToDiskOrOpenNewTab(button.recordRTC[0]);
                                     return;
                                 }
@@ -199,6 +207,14 @@ function decompte()
                                     button.recordingEndedCallback(url);
                                     stopStream();
                                     RecordRTC.writeToDisk();
+                                    var id = $_GET('id');
+                                    if(id == 0) {
+                                        window.location = 'validerEnregistrement.php?id=0';
+                                    } else if(id == 1) {
+                                        window.location = 'validerEnregistrement.php?id=1';
+                                    } else {
+                                        window.location = 'validerEnregistrement.php';
+                                    }
                                 });
                             });
                         }
@@ -207,19 +223,17 @@ function decompte()
                                 button.recordingEndedCallback(url);
                                 stopStream();
                                 RecordRTC.writeToDisk();
-                                
+                                var id = $_GET('id');
+                                    if(id == 0) {
+                                        window.location = 'validerEnregistrement.php?id=0';
+                                    } else if(id == 1) {
+                                        window.location = 'validerEnregistrement.php?id=1';
+                                    } else {
+                                        window.location = 'validerEnregistrement.php';
+                                    }
                                 saveToDiskOrOpenNewTab(button.recordRTC);
                             });
                         }
-                        var id = $_GET('id');
-                        if(id == 0) {
-                            window.location = 'validerEnregistrement.php?id=0';
-                        } else if(id == 1) {
-                            window.location = 'validerEnregistrement.php?id=1';
-                        } else {
-                            window.location = 'validerEnregistrement.php';
-                        }
-                        
                     }
                     
                     return;

@@ -8,10 +8,24 @@
 	<link rel="stylesheet" href="css/general.css" title="apparence">
 	<link rel="icon" type="image/png" href="images/favicon/favicon.png">
 	<title>Vidéo Box !</title>
-	<?php 
+	<?php
 		if(isset($_GET['id'])) {
 			$_SESSION['id'] = $_GET['id']; 
 		}
+		$dirname = 'uploads';
+		/*$dir = opendir($dirname);
+		while (false !== ($file = readdir($dir))) {
+			if($file !== "." && $file !== ".." && $file !== "README.md"){
+				$files[] = array(
+						'nom' => $file,
+			 			'dateModif' => filectime($file)
+					);
+				filemtime($file);
+			}
+		}
+		var_dump($files);
+		closedir($dir);*/
+
 
 
 	?>

@@ -25,6 +25,11 @@
 		<div id="logo">
 			<img src="images/logo.svg" alt="logo">
 		</div>
+		<a href="index.php">
+			<div id="retour">
+				<img src="images/retour.svg" alt="changer le nom et prénom">
+			</div>
+		</a>
 	</section>
 	
 </body>
